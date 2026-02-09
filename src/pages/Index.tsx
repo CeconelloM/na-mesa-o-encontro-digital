@@ -1,12 +1,19 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import HeroSection from "@/components/HeroSection";
+import ContentCarousel from "@/components/ContentCarousel";
+import { contents, getContentsByType } from "@/data/mockData";
 
 const Index = () => {
+  const videoAulas = getContentsByType("video-aula");
+  const filmes = getContentsByType("filme");
+  const series = getContentsByType("serie");
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="space-y-8 pb-6">
+      <HeroSection />
+      <ContentCarousel title="Populares" items={contents} linkTo="/categories" />
+      <ContentCarousel title="Vídeo-aulas" items={videoAulas} linkTo="/categories?type=video-aula" />
+      <ContentCarousel title="Filmes" items={filmes} linkTo="/categories?type=filme" />
+      <ContentCarousel title="Séries" items={series} linkTo="/categories?type=serie" />
     </div>
   );
 };
